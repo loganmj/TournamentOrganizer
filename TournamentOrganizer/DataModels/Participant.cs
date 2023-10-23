@@ -15,8 +15,6 @@ namespace TournamentOrganizer.DataModels
         [ObservableProperty]
         private string _name;
 
-        private List<string> _namesPlayed;
-
         #endregion
 
         #region Constructors

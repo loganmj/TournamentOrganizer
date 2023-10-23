@@ -5,39 +5,31 @@
     /// </summary>
     internal interface ITournament
     {
-        /*
-
-        #region Fields
-
-        [ObservableProperty]
-        private List<Participant> _participants;
-
-        [ObservableProperty]
-        private int _currentRound;
-
-        [ObservableProperty]
-        private int _totalRounds;
-
-        [ObservableProperty]
-        private List<Pairing> _pairings;
-
-        [ObservableProperty]
-        private string _description;
-
-        #endregion
-
-        */
-
         #region Properties
 
+        /// <summary>
+        /// The list of Participants involved in the Tournament.
+        /// </summary>
         public List<Participant> Participants { get; set; }
 
+        /// <summary>
+        /// The current Round count.
+        /// </summary>
         public int CurrentRound { get; set; }
 
+        /// <summary>
+        /// The total number of rounds in the Tournament.
+        /// </summary>
         public int TotalRounds { get; set; }
 
+        /// <summary>
+        /// The list of Pairings in the current Round.
+        /// </summary>
         public List<Pairing> Pairings { get; set; }
 
+        /// <summary>
+        /// A text description of the Tournament type.
+        /// </summary>
         public string Description { get; set; }
 
         #endregion
