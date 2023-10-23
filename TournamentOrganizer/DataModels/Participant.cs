@@ -15,6 +15,8 @@ namespace TournamentOrganizer.DataModels
         [ObservableProperty]
         private string _name;
 
+        private List<string> _namesPlayed;
+
         #endregion
 
         #region Constructors
@@ -40,6 +42,17 @@ namespace TournamentOrganizer.DataModels
         {
             return $"Participant | Name: {Name}";
         }
+
+        /// <summary>
+        /// Adds a Participant to the list of Participants that have been played.
+        /// </summary>
+        /// <param name="participant"></param>
+        public void AddPlayed(Participant participant) { }
+
+        /// <summary>
+        /// Checks if this Participant has played against a given Participant.
+        /// </summary>
+        public void HasPlayed(Participant participant) { }
 
         #endregion
     }
