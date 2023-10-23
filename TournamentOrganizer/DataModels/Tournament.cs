@@ -5,12 +5,18 @@ namespace TournamentOrganizer.DataModels
     /// <summary>
     /// Represents a tournament.
     /// </summary>
-    internal partial class Tournament : ObservableObject
+    internal abstract partial class Tournament : ObservableObject
     {
         #region Fields
 
         [ObservableProperty]
         private List<Participant> _participants;
+
+        [ObservableProperty]
+        private int _currentRound;
+
+        [ObservableProperty]
+        private int _totalRounds;
 
         #endregion
 
@@ -28,21 +34,12 @@ namespace TournamentOrganizer.DataModels
         /// <summary>
         /// Adds a Participant to the Tournament.
         /// </summary>
-        public void AddParticipant() { }
+        public abstract void AddParticipant();
 
         /// <summary>
         /// Removes a Participant 
         /// </summary>
-        public void RemoveParticipant() { }
-
-        /// <summary>
-        /// Returns a string representation of the Tournament.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        public abstract void RemoveParticipant();
 
         #endregion
     }
