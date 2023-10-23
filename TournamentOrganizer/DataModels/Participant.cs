@@ -1,9 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TournamentOrganizer.DataModels
 {
@@ -28,7 +23,7 @@ namespace TournamentOrganizer.DataModels
         /// Basic constructor requires a name for the participant.
         /// </summary>
         /// <param name="name"></param>
-        public Participant(string name) 
+        public Participant(string name)
         {
             Name = name;
         }

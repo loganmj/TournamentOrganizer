@@ -1,9 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TournamentOrganizer.DataModels
 {
@@ -26,7 +21,7 @@ namespace TournamentOrganizer.DataModels
         /// </summary>
         public Tournament() { }
 
-        #region
+        #endregion
 
         #region Public Methods
 
