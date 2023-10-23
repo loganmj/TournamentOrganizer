@@ -11,7 +11,7 @@ namespace TournamentOrganizer.ViewModels
         #region Fields
 
         [ObservableProperty]
-        private Tournament _tournament;
+        private ITournament _tournament;
 
         #endregion
 

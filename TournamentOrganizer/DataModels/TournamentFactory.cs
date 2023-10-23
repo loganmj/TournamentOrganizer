@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TournamentOrganizer.DataModels
+﻿namespace TournamentOrganizer.DataModels
 {
     /// <summary>
     /// A static class used to create new Tournament objects.
@@ -18,7 +12,7 @@ namespace TournamentOrganizer.DataModels
         /// </summary>
         /// <param name="tournamentType"></param>
         /// <returns></returns>
-        public static Tournament CreateTournament(string tournamentType)
+        public static ITournament CreateTournament(string tournamentType)
         {
             // TODO
             return null;

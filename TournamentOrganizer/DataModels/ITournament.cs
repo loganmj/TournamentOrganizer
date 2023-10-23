@@ -1,12 +1,12 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-
-namespace TournamentOrganizer.DataModels
+﻿namespace TournamentOrganizer.DataModels
 {
     /// <summary>
     /// Represents a tournament.
     /// </summary>
-    internal abstract partial class Tournament : ObservableObject
+    internal interface ITournament
     {
+        /*
+
         #region Fields
 
         [ObservableProperty]
@@ -26,30 +26,46 @@ namespace TournamentOrganizer.DataModels
 
         #endregion
 
+        */
+
+        #region Properties
+
+        public List<Participant> Participants { get; set; }
+
+        public int CurrentRound { get; set; }
+
+        public int TotalRounds { get; set; }
+
+        public List<Pairing> Pairings { get; set; }
+
+        public string Description { get; set; }
+
+        #endregion
+
         #region Public Methods
 
         /// <summary>
         /// Adds a Participant to the Tournament.
         /// </summary>
-        public abstract void AddParticipant();
+        public void AddParticipant();
 
         /// <summary>
         /// Removes a Participant 
         /// </summary>
-        public abstract void RemoveParticipant();
+        public void RemoveParticipant();
 
         /// <summary>
         /// Generates a new list of Pairings and advances
         /// the CurrentRound count.
         /// </summary>
-        public abstract void AdvanceToNextRound();
+        public void AdvanceToNextRound();
 
         /// <summary>
         /// Returns a string representation of the Tournament type.
         /// This is required for Factory design pattern.
         /// </summary>
         /// <returns></returns>
-        public abstract string GetTournamentType();
+        public string GetTournamentType();
 
         #endregion
     }
