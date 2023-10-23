@@ -21,6 +21,9 @@ namespace TournamentOrganizer.DataModels
         [ObservableProperty]
         private List<Pairing> _pairings;
 
+        [ObservableProperty]
+        private string _description;
+
         #endregion
 
         #region Public Methods
@@ -40,6 +43,13 @@ namespace TournamentOrganizer.DataModels
         /// the CurrentRound count.
         /// </summary>
         public abstract void AdvanceToNextRound();
+
+        /// <summary>
+        /// Returns a string representation of the Tournament type.
+        /// This is required for Factory design pattern.
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetTournamentType();
 
         #endregion
     }
