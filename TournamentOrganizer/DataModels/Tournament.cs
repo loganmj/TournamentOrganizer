@@ -23,15 +23,6 @@ namespace TournamentOrganizer.DataModels
 
         #endregion
 
-        #region Constructors
-
-        /// <summary>
-        /// Generic constructor.
-        /// </summary>
-        public Tournament() { }
-
-        #endregion
-
         #region Public Methods
 
         /// <summary>
