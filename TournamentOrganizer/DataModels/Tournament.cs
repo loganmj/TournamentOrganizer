@@ -35,6 +35,12 @@ namespace TournamentOrganizer.DataModels
         /// </summary>
         public abstract void RemoveParticipant();
 
+        /// <summary>
+        /// Generates a new list of Pairings and advances
+        /// the CurrentRound count.
+        /// </summary>
+        public abstract void AdvanceToNextRound();
+
         #endregion
     }
 }

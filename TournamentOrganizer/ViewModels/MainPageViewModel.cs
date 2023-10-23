@@ -1,10 +1,20 @@
-﻿namespace TournamentOrganizer.ViewModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using TournamentOrganizer.DataModels;
+
+namespace TournamentOrganizer.ViewModels
 {
     /// <summary>
     /// Controller for the MainPage view.
     /// </summary>
-    internal class MainPageViewModel : ViewModelBase
+    internal partial class MainPageViewModel : ViewModelBase
     {
+        #region Fields
+
+        [ObservableProperty]
+        private Tournament _tournament;
+
+        #endregion
+
         #region Constructors
 
         /// <summary>
@@ -15,6 +25,9 @@
 
         }
 
+        #endregion
+
+        #region Public Methods
         #endregion
     }
 }
