@@ -18,6 +18,9 @@ namespace TournamentOrganizer.DataModels
         [ObservableProperty]
         private int _totalRounds;
 
+        [ObservableProperty]
+        private List<Pairing> _pairings;
+
         #endregion
 
         #region Constructors
