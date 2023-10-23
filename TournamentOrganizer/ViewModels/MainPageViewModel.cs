@@ -22,7 +22,8 @@ namespace TournamentOrganizer.ViewModels
         /// </summary>
         public MainPageViewModel()
         {
-
+            // TEST
+            _tournament = TournamentFactory.CreateTournament(ITournament.TournamentTypes.RoundRobin);
         }
 
         #endregion

@@ -5,6 +5,19 @@
     /// </summary>
     internal interface ITournament
     {
+        #region Enums
+
+        /// <summary>
+        /// The supported Tournament types.
+        /// </summary>
+        public enum TournamentTypes
+        {
+            RoundRobin,
+            Swiss
+        }
+
+        #endregion
+
         #region Properties
 
         /// <summary>

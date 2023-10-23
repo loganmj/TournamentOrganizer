@@ -1,11 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace TournamentOrganizer.DataModels
 {
     /// <summary>
-    /// Implementation for a Round Robin style Tournament.
+    /// Implementation for a Swiss style Tournament.
     /// </summary>
-    internal partial class RoundRobinTournament : ObservableObject, ITournament
+    internal partial class SwissTournament : ObservableObject, ITournament
     {
         #region Fields
 

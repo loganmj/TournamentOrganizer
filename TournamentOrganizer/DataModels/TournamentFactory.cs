@@ -10,12 +10,16 @@
         /// <summary>
         /// Creates a Tournament object based on the passed in type.
         /// </summary>
-        /// <param name="tournamentType"></param>
+        /// <param name="type"></param>
         /// <returns></returns>
-        public static ITournament CreateTournament(string tournamentType)
+        public static ITournament CreateTournament(ITournament.TournamentTypes type)
         {
-            // TODO
-            return null;
+            return type switch
+            {
+                ITournament.TournamentTypes.RoundRobin => new RoundRobinTournament(),
+                ITournament.TournamentTypes.Swiss => new SwissTournament(),
+                _ => null,
+            };
         }
 
         #endregion
