@@ -24,7 +24,7 @@ namespace TournamentOrganizer.DataModels
         /// </summary>
         /// <param name="participant1"></param>
         /// <param name="participant2"></param>
-        public Pairing(Participant participant1, Participant participant2)
+        public Pairing(ref Participant participant1, ref Participant participant2)
         {
             Participant1 = participant1;
             Participant2 = participant2;
