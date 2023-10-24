@@ -1,9 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TournamentOrganizer.DataModels
 {
@@ -15,7 +10,7 @@ namespace TournamentOrganizer.DataModels
         #region Fields
 
         [ObservableProperty]
-        private List<Participant> _participants;
+        private List<IParticipant> _participants;
 
         [ObservableProperty]
         private int _currentRound;

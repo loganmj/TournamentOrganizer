@@ -23,7 +23,7 @@
         /// <summary>
         /// The list of Participants involved in the Tournament.
         /// </summary>
-        public List<Participant> Participants { get; set; }
+        public List<IParticipant> Participants { get; set; }
 
         /// <summary>
         /// The current Round count.

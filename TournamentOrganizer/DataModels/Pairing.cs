@@ -10,10 +10,10 @@ namespace TournamentOrganizer.DataModels
         #region Fields
 
         [ObservableProperty]
-        private Participant _participant1;
+        private IParticipant _participant1;
 
         [ObservableProperty]
-        private Participant _participant2;
+        private IParticipant _participant2;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace TournamentOrganizer.DataModels
         /// </summary>
         /// <param name="participant1"></param>
         /// <param name="participant2"></param>
-        public Pairing(ref Participant participant1, ref Participant participant2)
+        public Pairing(ref IParticipant participant1, ref IParticipant participant2)
         {
             Participant1 = participant1;
             Participant2 = participant2;

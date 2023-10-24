@@ -10,7 +10,7 @@ namespace TournamentOrganizer.DataModels
         #region Fields
 
         [ObservableProperty]
-        private List<Participant> _participants;
+        private List<IParticipant> _participants;
 
         [ObservableProperty]
         private int _currentRound;
