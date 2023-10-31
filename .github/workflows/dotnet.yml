@@ -32,10 +32,10 @@ jobs:
         dotnet workload install maccatalyst
         dotnet restore
     - name: Build and test for Android
-      run: dotnet build --configuration Release --framework net7.0-android && dotnet test --no-build --configuration Release --framework net7.0-android
+      run: dotnet build --configuration Release --framework net6.0-android && dotnet test --no-build --configuration Release --framework net6.0-android
 
     - name: Build and test for iOS
-      run: dotnet build --configuration Release /p:MtouchLink=None --framework net7.0-ios && dotnet test --no-build --configuration Release --framework net7.0-ios
+      run: dotnet build --configuration Release --framework net6.0-ios && dotnet test --no-build --configuration Release --framework net6.0-ios
 
     - name: Build and test for Windows
       run: dotnet build --configuration Release --framework net6.0-windows && dotnet test --no-build --configuration Release --framework net6.0-windows
