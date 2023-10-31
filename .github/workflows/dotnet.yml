@@ -1,42 +1,101 @@
-# Build and test the project for Windows, MacOS, Android, and iOS.
-# Workflow file written by ChatGPT.
+name: CI Build
 
-name: Build and Test
-
+# Define when the workflow is run
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.gitignore'
+      - '**/*.gitattributes'
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
+  workflow_dispatch:
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true                     # Disable the .NET logo
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true # Disable the .NET first time experience
+  DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest]
+  # Build the application for an Android environment.
+  build-android:
 
+    runs-on: windows-latest
+    name: Android Build
+    
     steps:
     - uses: actions/checkout@v3
-
+    
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '7.0.x'
-        include-prerelease: true
+        dotnet-version: 7.0.x
 
-    - name: Install dependencies
+    - name: Install MAUI workload
+      run: |
+        dotnet workload install maui-android
+        dotnet workload install maui-maccatalyst
+        
+    - name: Restore dependencies
       run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --no-restore
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
-    - name: Build and test for Android
-      if: matrix.os == 'macos-latest'
-      run: dotnet build --configuration Release --framework net7.0-android && dotnet test --no-build --configuration Release --framework net7.0-android
+  # Build the application for a Windows environment.
+  build-windows:
+    runs-on: windows-latest
+    name: Windows Build
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Build and test for iOS
-      if: matrix.os == 'macos-latest'
-      run: dotnet build --configuration Release --framework net7.0-ios && dotnet test --no-build --configuration Release --framework net7.0-ios
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 7.0.x
+          include-prerelease: true
 
-    - name: Build and test for Windows
-      if: matrix.os == 'windows-latest'
-      run: dotnet build --configuration Release --framework net6.0-windows && dotnet test --no-build --configuration Release --framework net6.0-windows
+      - name: Install MAUI Workloads
+        run: |
+          dotnet workload install maui
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build MAUI Windows
+        run: dotnet build --no-restore
+
+  # Build the application for an iOS environment.
+  build-ios:
+    runs-on: macos-latest
+    name: iOS Build
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET 6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+          include-prerelease: true
+
+      - name: Install MAUI Workloads
+        run: |
+          dotnet workload install ios
+          dotnet workload install maui
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build MAUI iOS
+        run: dotnet build --no-restore
