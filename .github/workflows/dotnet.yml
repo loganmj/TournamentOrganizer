@@ -1,5 +1,3 @@
-# Build and test the project for Windows, MacOS, Android, and iOS.
-# Workflow file written by ChatGPT.
 name: Build and Test
 
 on:
@@ -10,11 +8,7 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest]
+    runs-on: macos-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -34,13 +28,10 @@ jobs:
         dotnet workload install ios
         dotnet restore
     - name: Build and test for Android
-      if: matrix.os == 'macos-latest'
       run: dotnet build --configuration Release --framework net7.0-android && dotnet test --no-build --configuration Release --framework net7.0-android
 
     - name: Build and test for iOS
-      if: matrix.os == 'macos-latest'
       run: dotnet build --configuration Release --framework net7.0-ios && dotnet test --no-build --configuration Release --framework net7.0-ios
 
     - name: Build and test for Windows
-      if: matrix.os == 'windows-latest'
       run: dotnet build --configuration Release --framework net6.0-windows && dotnet test --no-build --configuration Release --framework net6.0-windows
