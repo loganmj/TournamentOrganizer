@@ -1,6 +1,5 @@
 # Build and test the project for Windows, MacOS, Android, and iOS.
 # Workflow file written by ChatGPT.
-
 name: Build and Test
 
 on:
@@ -34,7 +33,6 @@ jobs:
         dotnet workload install maui-android
         dotnet workload install ios
         dotnet restore
-
     - name: Build and test for Android
       if: matrix.os == 'macos-latest'
       run: dotnet build --configuration Release --framework net7.0-android && dotnet test --no-build --configuration Release --framework net7.0-android
