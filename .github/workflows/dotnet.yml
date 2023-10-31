@@ -1,5 +1,6 @@
 name: CI Build
 
+# Define when the workflow is run
 on:
   push:
     branches: [ master ]
@@ -19,10 +20,13 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true       # Disable sending .NET CLI telemetry
 
 jobs:
+
+  # Build the application for an Android environment.
   build-android:
 
     runs-on: windows-latest
     name: Android Build
+    
     steps:
     - uses: actions/checkout@v3
     
@@ -45,9 +49,11 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
 
+  # Build the application for a Windows environment.
   build-windows:
     runs-on: windows-latest
     name: Windows Build
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -60,10 +66,36 @@ jobs:
 
       - name: Install MAUI Workloads
         run: |
-          dotnet workload install maui --ignore-failed-sources
+          dotnet workload install maui
 
       - name: Restore Dependencies
         run: dotnet restore
 
       - name: Build MAUI Windows
+        run: dotnet build --no-restore
+
+  # Build the application for an iOS environment.
+  build-ios:
+    runs-on: macos-latest
+    name: iOS Build
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup .NET 6
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+          include-prerelease: true
+
+      - name: Install MAUI Workloads
+        run: |
+          dotnet workload install ios
+          dotnet workload install maui
+
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build MAUI iOS
         run: dotnet build --no-restore
