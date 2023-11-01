@@ -74,5 +74,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           name: mauibeach-windows-ci-build
-          path: TournamentOrganizer/bin/Release/net7.0-windows10.0.19041.0/win10-x64/TournamentOrganizer*.msix
+          path: TournamentOrganizer/bin/Release/net7.0-windows10.0.19041.0/win10-x64/TournamentOrganizer*.exe
 
