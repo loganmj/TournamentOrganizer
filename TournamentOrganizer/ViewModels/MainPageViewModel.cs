@@ -1,7 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using TournamentOrganizer.DataModels;
-
-namespace TournamentOrganizer.ViewModels
+﻿namespace TournamentOrganizer.ViewModels
 {
     /// <summary>
     /// Controller for the MainPage view.

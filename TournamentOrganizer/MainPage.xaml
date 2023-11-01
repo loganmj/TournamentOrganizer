@@ -19,25 +19,19 @@
             VerticalOptions="Center">
 
             <Image
-                Source="dotnet_bot.png"
+                Source="tournament_flowchart.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
+                Text="Welcome to Tournament Organizer"
                 SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                SemanticProperties.Description="Setup and run a tournament."
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Picker x:Name="TournamentTypePicker" Title="Select a Tournament Type:"></Picker>
+            <Picker x:Name="TournamentTypePicker" HorizontalOptions="Center" Title="Select a Tournament Type:"></Picker>
 
         </VerticalStackLayout>
     </ScrollView>
