@@ -3,13 +3,13 @@ name: CI Build
 # Define when the workflow is run
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
       - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 permissions:
   contents: read
@@ -39,12 +39,10 @@ jobs:
       run: |
         dotnet workload install maui-android
         dotnet workload install maui-maccatalyst
-        
-    - name: Restore dependencies
-      run: dotnet restore
+        dotnet workload install ios
       
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --configuration Release
       
     - name: Test
       run: dotnet test --no-build --verbosity normal
@@ -68,34 +66,8 @@ jobs:
         run: |
           dotnet workload install maui
 
-      - name: Restore Dependencies
-        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release
 
-      - name: Build MAUI Windows
-        run: dotnet build --no-restore
-
-  # Build the application for an iOS environment.
-  build-ios:
-    runs-on: macos-latest
-    name: iOS Build
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup .NET 6
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.x
-          include-prerelease: true
-
-      - name: Install MAUI Workloads
-        run: |
-          dotnet workload install ios
-          dotnet workload install maui
-
-      - name: Restore Dependencies
-        run: dotnet restore
-
-      - name: Build MAUI iOS
-        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
