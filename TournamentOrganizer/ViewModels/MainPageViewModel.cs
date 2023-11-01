@@ -1,4 +1,8 @@
-﻿namespace TournamentOrganizer.ViewModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
+using TournamentOrganizer.DataModels;
+
+namespace TournamentOrganizer.ViewModels
 {
     /// <summary>
     /// Controller for the MainPage view.
@@ -8,6 +12,13 @@
     internal partial class MainPageViewModel : ViewModelBase
     {
         #region Fields
+
+        [ObservableProperty]
+        private ObservableCollection<ITournament.TournamentTypes> _tournamentTypes;
+
+        [ObservableProperty]
+        private ITournament _tournament;
+
         #endregion
 
         #region Constructors
@@ -18,6 +29,7 @@
         public MainPageViewModel()
         {
             Title = "Tournament Organizer";
+            TournamentTypes = new ObservableCollection<ITournament.TournamentTypes>(Enum.GetValues(typeof(ITournament.TournamentTypes)).OfType<ITournament.TournamentTypes>().ToList());
         }
 
         #endregion
