@@ -42,7 +42,7 @@ jobs:
         dotnet workload install ios
         
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore --configuration Release
       
     - name: Build
       run: dotnet build --no-restore
@@ -70,7 +70,7 @@ jobs:
           dotnet workload install maui
 
       - name: Restore Dependencies
-        run: dotnet restore
+        run: dotnet restore --configuration Release
 
       - name: Build MAUI Windows
         run: dotnet build --no-restore
@@ -96,7 +96,7 @@ jobs:
           dotnet workload install maui
 
       - name: Restore Dependencies
-        run: dotnet restore
+        run: dotnet restore --configuration Release /p:PublishTrimmed=false
 
       - name: Build MAUI iOS
         run: dotnet build --no-restore
