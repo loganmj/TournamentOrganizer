@@ -28,10 +28,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
     
-    - name: Setup .NET 6
+    - name: Setup .NET 7
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
 
     - name: Install MAUI Workload
       run: dotnet workload install maui --ignore-failed-sources
@@ -40,13 +40,13 @@ jobs:
       run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
       
     - name: Build Project
-      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-android --no-restore
+      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android --no-restore
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
         name: mauibeach-android-ci-build
-        path: TournamentOrganizer/bin/Release/net6.0-android/*Signed.a*      
+        path: TournamentOrganizer/bin/Release/net7.0-android/*Signed.a*      
 
   # Build the application for a Windows environment.
   build-windows:
@@ -56,10 +56,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
@@ -68,13 +68,13 @@ jobs:
         run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
 
       - name: Build MAUI Windows
-        run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-windows10.0.19041.0 --no-restore
+        run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-windows10.0.19041.0 --no-restore
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: mauibeach-windows-ci-build
-          path: TournamentOrganizer/bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/TournamentOrganizer*/TournamentOrganizer*.msix
+          path: TournamentOrganizer/bin/Release/net7.0-windows10.0.19041.0/win10-x64/AppPackages/TournamentOrganizer*/TournamentOrganizer*.msix
 
   # Build the application for an iOS environment
   build-ios:
@@ -84,10 +84,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
@@ -96,7 +96,7 @@ jobs:
         run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
 
       - name: Build MAUI iOS
-        run: dotnet build TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-ios --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
+        run: dotnet build TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-ios --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
 
       - name: Upload iOS Artifact
         uses: actions/upload-artifact@v3.1.0
@@ -112,10 +112,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
@@ -130,5 +130,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           name: mauibeach-macos-ci-build
-          path: TournamentOrganizer/bin/Release/net6.0-maccatalyst/maccatalyst-x64/publish/*.pkg
+          path: TournamentOrganizer/bin/Release/net7.0-maccatalyst/maccatalyst-x64/publish/*.pkg
 
