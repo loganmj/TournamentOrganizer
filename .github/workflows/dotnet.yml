@@ -40,7 +40,7 @@ jobs:
       run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj /p:PublishReadyToRun=true
       
     - name: Build Project
-      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android33 --no-restore
+      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android33.0 --no-restore
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
@@ -74,5 +74,5 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           name: mauibeach-windows-ci-build
-          path: TournamentOrganizer/bin/Release/net7.0-windows10.0.19041.0/win10-x64/TournamentOrganizer*.exe
+          path: TournamentOrganizer/bin/Release/net7.0-windows10.0.22621.0/win10-x64/TournamentOrganizer*.exe
 
