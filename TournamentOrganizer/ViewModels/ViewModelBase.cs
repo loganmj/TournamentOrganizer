@@ -7,6 +7,12 @@ namespace TournamentOrganizer.ViewModels
     /// </summary>
     internal partial class ViewModelBase : ObservableObject
     {
+        #region Constants
+
+        public string GLOBAL_COLOR_BLUE = "#56C0CC";
+
+        #endregion
+
         #region Fields
 
         [ObservableProperty]

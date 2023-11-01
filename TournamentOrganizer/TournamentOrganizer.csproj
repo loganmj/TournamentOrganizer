@@ -38,31 +38,60 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
 	  <Optimize>True</Optimize>
+	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>1</ApplicationVersion>
+	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.19041.0|AnyCPU'">
 	  <Optimize>True</Optimize>
 	</PropertyGroup>
 
-	<PropertyGroup>
-	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
-	</PropertyGroup>
-
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
 	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>1</ApplicationVersion>
+	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
 	  <RunAOTCompilation>True</RunAOTCompilation>
 	  <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
+	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>1</ApplicationVersion>
+	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup>
+	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
+	  <SignAssembly>False</SignAssembly>
+	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>1</ApplicationVersion>
+	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.22621.0|AnyCPU'">
+	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>1</ApplicationVersion>
+	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.22621.0|AnyCPU'">
+	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+	  <ApplicationVersion>1</ApplicationVersion>
+	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
+    <MauiIcon Include="Resources\AppIcon\tournament_organizer_icon.png" />
+    
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
