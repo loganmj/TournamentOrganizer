@@ -3,13 +3,13 @@ name: CI Build
 # Define when the workflow is run
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
     paths-ignore:
       - '**/*.md'
       - '**/*.gitignore'
       - '**/*.gitattributes'
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:
 permissions:
   contents: read
