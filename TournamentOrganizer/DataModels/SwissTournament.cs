@@ -26,6 +26,15 @@ namespace TournamentOrganizer.DataModels
 
         #endregion
 
+        #region Constructors
+
+        public SwissTournament() 
+        {
+            Description = "Swiss Tournament";
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void AddParticipant()

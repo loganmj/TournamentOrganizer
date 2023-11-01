@@ -20,7 +20,6 @@
 
             <Image
                 Source="tournament_flowchart.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
@@ -31,7 +30,9 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Picker x:Name="TournamentTypePicker" HorizontalOptions="Center" Title="Select a Tournament Type:" ItemsSource="{Binding TournamentTypes}"></Picker>
+            <Picker x:Name="TournamentTypePicker" HorizontalOptions="Center" Title="Select a Tournament Type:" ItemsSource="{Binding TournamentTypes}" SelectedIndex="{Binding SelectedTournamentIndex}"></Picker>
+
+            <Label Text="{Binding Tournament.Description}"/>
 
         </VerticalStackLayout>
     </ScrollView>
