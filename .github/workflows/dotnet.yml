@@ -1,6 +1,5 @@
-name: CI Build
-
 # Define when the workflow is run
+name: CI Build
 on:
   push:
     branches: [ main ]
@@ -23,84 +22,113 @@ jobs:
 
   # Build the application for an Android environment.
   build-android:
-
     runs-on: windows-latest
     name: Android Build
-    
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
     
-    - name: Setup .NET
+    - name: Setup .NET 6
       uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 6.0.x
 
-    - name: Install MAUI workload
-      run: |
-        dotnet workload install maui-android --ignore-failed-sources
-        dotnet workload install maccatalyst --ignore-failed-sources
+    - name: Install MAUI Workload
+      run: dotnet workload install maui --ignore-failed-sources
 
     - name: Restore Dependencies
-      run: dotnet restore
+      run: dotnet restore src/TournamentOrganizer/TournamentOrganizer.csproj
       
-    - name: Build
-      run: dotnet build --no-restore --configuration Release
+    - name: Build Project
+      run: dotnet publish src/TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-android --no-restore
       
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Upload Android Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: mauibeach-android-ci-build
+        path: src/TournamentOrganizer/bin/Release/net6.0-android/*Signed.a*      
 
   # Build the application for a Windows environment.
   build-windows:
     runs-on: windows-latest
     name: Windows Build
-    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup .NET 6
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install MAUI Workload
+        run: dotnet workload install maui --ignore-failed-sources
+
+      - name: Restore Dependencies
+        run: dotnet restore src/TournamentOrganizer/TournamentOrganizer.csproj
+
+      - name: Build MAUI Windows
+        run: dotnet publish src/TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-windows10.0.19041.0 --no-restore
+
+      - name: Upload Windows Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: mauibeach-windows-ci-build
+          path: src/TournamentOrganizer/bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/TournamentOrganizer*/TournamentOrganizer*.msix
+
+  # Build the application for an iOS environment
+  build-ios:
+    runs-on: macos-12
+    name: iOS Build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup .NET
+      - name: Setup .NET 6
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0.x
-          include-prerelease: true
+          dotnet-version: 6.0.x
 
-      - name: Install MAUI Workloads
-        run: |
-          dotnet workload install maui --ignore-failed-sources
-          
+      - name: Install MAUI Workload
+        run: dotnet workload install maui --ignore-failed-sources
+
       - name: Restore Dependencies
-        run: dotnet restore          
+        run: dotnet restore src/TournamentOrganizer/TournamentOrganizer.csproj
 
-      - name: Build
-        run: dotnet build --configuration Release
+      - name: Build MAUI iOS
+        run: dotnet build src/TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-ios --no-restore /p:buildForSimulator=True /p:packageApp=True /p:ArchiveOnBuild=False
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      - name: Upload iOS Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: mauibeach-ios-ci-build
+          path: src/TournamentOrganizer/bin/Release/net6.0-ios/iossimulator-x64/**/*.app
 
-  # Build the application for a Mac environment
+# MAUI MacCatalyst Build
   build-mac:
-    runs-on: macos-latest
+    runs-on: macos-12
     name: MacCatalyst Build
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup .NET
+      - name: Setup .NET 6
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 7.0.x
-          include-prerelease: true
+          dotnet-version: 6.0.x
 
-      - name: Install MAUI Workloads
-        run: |
-          dotnet workload install maccatalyst --ignore-failed-sources
-          dotnet workload install maui --ignore-failed-sources
-          
+      - name: Install MAUI Workload
+        run: dotnet workload install maui --ignore-failed-sources
+
       - name: Restore Dependencies
-        run: dotnet restore          
+        run: dotnet restore src/TournamentOrganizer/TournamentOrganizer.csproj
 
       - name: Build MAUI MacCatalyst
-        run: dotnet build --configuration Release
+        run: dotnet publish src/TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net6.0-maccatalyst --no-restore -p:BuildIpa=True
 
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
+      - name: Upload MacCatalyst Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: mauibeach-macos-ci-build
+          path: src/TournamentOrganizer/bin/Release/net6.0-maccatalyst/maccatalyst-x64/publish/*.pkg
+
