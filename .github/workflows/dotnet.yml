@@ -36,11 +36,11 @@ jobs:
     - name: Install MAUI Workload
       run: dotnet workload install maui --ignore-failed-sources
 
-    - name: Restore Dependencies
-      run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
+#    - name: Restore Dependencies
+#      run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
       
     - name: Build Project
-      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0 --no-restore
+      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android /p:PublishReadyToRun=true
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
@@ -64,11 +64,11 @@ jobs:
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
 
-      - name: Restore Dependencies
-        run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
+#      - name: Restore Dependencies
+#        run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj /p:PublishReadyToRun=true
 
       - name: Build MAUI Windows
-        run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-windows10.0.22621.0 --no-restore
+        run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-windows10.0.22621.0 /p:PublishReadyToRun=true
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@v3.1.0
