@@ -40,7 +40,7 @@ jobs:
 #      run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
       
     - name: Build Project
-      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android /p:PublishReadyToRun=true
+      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android33 /p:PublishReadyToRun=true
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
