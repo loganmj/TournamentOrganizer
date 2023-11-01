@@ -71,29 +71,3 @@ jobs:
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
-
-  # Build the application for an iOS environment.
-  build-ios:
-    runs-on: macos-latest
-    name: iOS Build
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup .NET 6
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.x
-          include-prerelease: true
-
-      - name: Install MAUI Workloads
-        run: |
-          dotnet workload install ios
-          dotnet workload install maui
-          
-      - name: Build MAUI iOS
-        run: dotnet build --configuration Release /p:PublishTrimmed=true /p:MtouchLink=None
-
-      - name: Test
-        run: dotnet test --no-build --verbosity normal
