@@ -46,7 +46,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.0
       with:
         name: mauibeach-android-ci-build
-        path: TournamentOrganizer/bin/Release/net7.0-android/*Signed.a*      
+        path: TournamentOrganizer/bin/Release/net7.0-android33/*Signed.a*      
 
   # Build the application for a Windows environment.
   build-windows:
