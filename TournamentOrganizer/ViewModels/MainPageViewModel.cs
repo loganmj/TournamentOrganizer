@@ -23,6 +23,9 @@ namespace TournamentOrganizer.ViewModels
         [ObservableProperty]
         private int _selectedTournamentIndex;
 
+        [ObservableProperty]
+        private string _tournamentDescription;
+
         #endregion
 
         #region Constructors
@@ -35,7 +38,8 @@ namespace TournamentOrganizer.ViewModels
             Title = "Tournament Organizer";
             TournamentTypes = new ObservableCollection<ITournament.TournamentTypes>(Enum.GetValues(typeof(ITournament.TournamentTypes)).OfType<ITournament.TournamentTypes>().ToList());
             SelectedTournamentIndex = 0;
-            this.PropertyChanged += OnPropertyChanged;
+            TournamentDescription = TournamentFactory.GetDescription((ITournament.TournamentTypes)SelectedTournamentIndex);
+            PropertyChanged += OnPropertyChanged;
         }
 
         #endregion
@@ -51,8 +55,7 @@ namespace TournamentOrganizer.ViewModels
         {
             if (e.PropertyName.Equals(nameof(SelectedTournamentIndex))) 
             {
-                Tournament = TournamentFactory.CreateTournament((ITournament.TournamentTypes)SelectedTournamentIndex);
-                // Tournament = TournamentFactory.CreateTournament(ITournament.TournamentTypes.Swiss);
+                TournamentDescription = TournamentFactory.GetDescription((ITournament.TournamentTypes)SelectedTournamentIndex);
             }
         }
 

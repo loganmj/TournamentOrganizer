@@ -43,7 +43,7 @@
         /// <summary>
         /// A text description of the Tournament type.
         /// </summary>
-        public string Description { get; set; }
+        public static string Description { get; set; }
 
         #endregion
 

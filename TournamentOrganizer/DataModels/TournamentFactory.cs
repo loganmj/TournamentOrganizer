@@ -22,6 +22,21 @@
             };
         }
 
+        /// <summary>
+        /// Gets the description of a Tournament type.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetDescription(ITournament.TournamentTypes type) 
+        {
+            return type switch
+            {
+                ITournament.TournamentTypes.RoundRobin => RoundRobinTournament.Description,
+                ITournament.TournamentTypes.Swiss => SwissTournament.Description,
+                _ => null,
+            };
+        }
+
         #endregion
     }
 }

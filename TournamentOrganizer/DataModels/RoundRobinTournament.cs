@@ -21,8 +21,16 @@ namespace TournamentOrganizer.DataModels
         [ObservableProperty]
         private List<Pairing> _pairings;
 
-        [ObservableProperty]
-        private string _description;
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Returns the Tournament description.
+        /// </summary>
+        public static string Description { get; } = "A round-robin tournament (or all-play-all tournament)" +
+                " is a competition in which each contestant meets every other" +
+                " participant, usually in turn.";
 
         #endregion
 
@@ -48,6 +56,15 @@ namespace TournamentOrganizer.DataModels
             throw new NotImplementedException();
         }
 
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Generic constructor.
+        /// </summary>
+        public RoundRobinTournament() { }
+        
         #endregion
     }
 }
