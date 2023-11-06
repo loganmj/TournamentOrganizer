@@ -6,8 +6,8 @@
         {
             InitializeComponent();
 
-            // Add routing to AddParticipants page
-            Routing.RegisterRoute(nameof(AddParticipantsPage), typeof(AddParticipantsPage));
+            // Add routing to Participants page
+            Routing.RegisterRoute(nameof(ParticipantsPage), typeof(ParticipantsPage));
         }
     }
 }

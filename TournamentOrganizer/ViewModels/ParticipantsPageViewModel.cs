@@ -7,8 +7,7 @@ namespace TournamentOrganizer.ViewModels
     /// <summary>
     /// Business logic for the AddParticipantsPage.
     /// </summary>
-    [QueryProperty("Tournament", "Tournament")]
-    internal partial class AddParticipantsPageViewModel : ViewModelBase
+    public partial class ParticipantsPageViewModel : ViewModelBase, IQueryAttributable
     {
         #region Fields
 
@@ -23,14 +22,19 @@ namespace TournamentOrganizer.ViewModels
         /// This constructor requires an ITournament parameter reference
         /// that we can perform operations on.
         /// </summary>
-        public AddParticipantsPageViewModel()
+        public ParticipantsPageViewModel()
         {
-
         }
 
         #endregion
 
         #region Public Methods
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            Tournament = (ITournament)query["Tournament"];
+            Title = $"{EnumCustomAttributeConverter.GetEnumMemberName(Tournament.Type)} Tournament | Add Participants";
+        }
 
         /// <summary>
         /// Returns to the previous page.

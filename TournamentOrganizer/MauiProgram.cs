@@ -21,8 +21,8 @@ namespace TournamentOrganizer
             builder.Services.AddSingleton<MainPageViewModel>();
 
             // Add AddParticipants page
-            builder.Services.AddTransient<AddParticipantsPage>();
-            builder.Services.AddTransient<AddParticipantsPageViewModel>();
+            builder.Services.AddTransient<ParticipantsPage>();
+            builder.Services.AddTransient<ParticipantsPageViewModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

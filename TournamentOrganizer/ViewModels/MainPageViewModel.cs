@@ -78,9 +78,9 @@ namespace TournamentOrganizer.ViewModels
             Tournament = TournamentFactory.CreateTournament((ITournament.TournamentTypes)SelectedTournamentIndex);
 
             // Navigate to the AddParticipants page, passing in the Tournament object.
-            await Shell.Current.GoToAsync(nameof(AddParticipantsPage), new Dictionary<string, object>
+            await Shell.Current.GoToAsync(nameof(ParticipantsPage), new Dictionary<string, object>
             {
-                {nameof(AddParticipantsPage), Tournament }
+                {"Tournament", Tournament}
             });
         }
 

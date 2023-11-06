@@ -5,14 +5,14 @@ namespace TournamentOrganizer;
 /// <summary>
 /// Allows the user to add and remove Participants from the Tournament.
 /// </summary>
-public partial class AddParticipantsPage : ContentPage
+public partial class ParticipantsPage : ContentPage
 {
     /// <summary>
     /// Constructs an AddParticipantsPage
     /// </summary>
-    public AddParticipantsPage()
+    public ParticipantsPage(ParticipantsPageViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = new AddParticipantsPageViewModel();
+        BindingContext = viewModel;
     }
 }

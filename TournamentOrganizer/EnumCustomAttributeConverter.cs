@@ -10,6 +10,20 @@ namespace TournamentOrganizer
         #region Public Methods
 
         /// <summary>
+        /// Retrieves the custom name attribute from a value of a specified Enum type.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="value"></param>
+        /// <returns>Returns a string with the name attribute of the value from the
+        /// Enum type.</returns>
+        public static string GetEnumMemberName<T>(T value) where T : Enum
+        {
+            return typeof(T).GetMember(value.ToString())[0].GetCustomAttributes(typeof(EnumMemberAttribute), false).FirstOrDefault() is EnumMemberAttribute enumMemberAttribute ?
+            enumMemberAttribute.Value :
+            value.ToString();
+        }
+
+        /// <summary>
         /// Retrieves the custom name attributes from an an Enum type.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -31,7 +45,7 @@ namespace TournamentOrganizer
                 {
                     names.Add(enumMemberAttribute.Value);
                 }
-                else 
+                else
                 {
                     names.Add(value.ToString());
                 }

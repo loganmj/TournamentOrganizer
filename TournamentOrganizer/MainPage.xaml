@@ -24,7 +24,7 @@
                 HorizontalOptions="Center" />
 
             <Label
-                Text="Welcome to Tournament Organizer"
+                Text="Welcome to Tournament Organizer, Please select a Tournament Type"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Setup and run a tournament."
                 FontSize="18"

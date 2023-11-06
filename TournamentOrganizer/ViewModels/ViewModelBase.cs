@@ -5,7 +5,7 @@ namespace TournamentOrganizer.ViewModels
     /// <summary>
     /// A base class for ViewModel objects.
     /// </summary>
-    internal partial class ViewModelBase : ObservableObject
+    public partial class ViewModelBase : ObservableObject
     {
         #region Constants
 
