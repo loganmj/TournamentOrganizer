@@ -3,6 +3,9 @@ using TournamentOrganizer.ViewModels;
 
 namespace TournamentOrganizer.Views;
 
+/// <summary>
+/// This page runs the Tournament.
+/// </summary>
 public partial class TournamentPage : ContentPage
 {
 	/// <summary>

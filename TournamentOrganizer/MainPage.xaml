@@ -30,8 +30,13 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
+            <!-- Picker to select the tournament type -->
             <Picker x:Name="TournamentTypePicker" HorizontalOptions="Center" Title="Select a Tournament Type:" ItemsSource="{Binding TournamentTypes}" SelectedIndex="{Binding SelectedTournamentIndex}"></Picker>
 
+            <!-- Button to move to the next page -->
+            <Button x:Name="ProgressToAddParticipantsPageButton" HorizontalOptions="Center" Text="Next"/>
+
+            <!-- Tournament type description. (Still deciding if I want to do this here) -->
             <Label x:Name="DescriptionLabel" HorizontalOptions="Center" Text="{Binding TournamentDescription}"/>
 
         </VerticalStackLayout>
