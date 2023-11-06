@@ -5,7 +5,7 @@ namespace TournamentOrganizer.DataModels
     /// <summary>
     /// Represents a pairing between two Participants.
     /// </summary>
-    internal partial class Pairing : ObservableObject
+    public partial class Pairing : ObservableObject
     {
         #region Fields
 

@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents a participant in the tournament.
     /// </summary>
-    internal interface IParticipant
+    public interface IParticipant
     {
         #region Enums
 

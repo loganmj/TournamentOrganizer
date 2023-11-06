@@ -28,9 +28,7 @@ namespace TournamentOrganizer.DataModels
         /// <summary>
         /// Returns the Tournament description.
         /// </summary>
-        public static string Description { get; } = "A round-robin tournament (or all-play-all tournament)" +
-                " is a competition in which each contestant meets every other" +
-                " participant, usually in turn.";
+        public static string Description { get; } = "Each player is paired with each other player at least once.";
 
         #endregion
 
