@@ -1,7 +1,6 @@
-using TournamentOrganizer.DataModels;
 using TournamentOrganizer.ViewModels;
 
-namespace TournamentOrganizer.Views;
+namespace TournamentOrganizer;
 
 /// <summary>
 /// Allows the user to add and remove Participants from the Tournament.

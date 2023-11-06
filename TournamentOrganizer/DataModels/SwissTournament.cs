@@ -25,17 +25,21 @@ namespace TournamentOrganizer.DataModels
 
         #region Properties
 
-        /// <summary>
-        /// Returns the Tournament description.
-        /// </summary>
+        /// <inheritdoc/>
         public static string Description { get; } = "A Swiss tournament is a non-eliminating tournament." +
                 " Participants are ranked and paired based on their performance. No player will play the same" +
                 " opponent twice.";
+
+        /// <inheritdoc/>
+        public ITournament.TournamentTypes Type { get; } = ITournament.TournamentTypes.Swiss;
 
         #endregion
 
         #region Constructors
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
         public SwissTournament() { }
 
         #endregion

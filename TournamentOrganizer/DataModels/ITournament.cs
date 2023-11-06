@@ -1,4 +1,6 @@
-﻿namespace TournamentOrganizer.DataModels
+﻿using System.Runtime.Serialization;
+
+namespace TournamentOrganizer.DataModels
 {
     /// <summary>
     /// Represents a tournament.
@@ -12,6 +14,7 @@
         /// </summary>
         public enum TournamentTypes
         {
+            [EnumMember(Value = "Round Robin")]
             RoundRobin,
             Swiss
         }
@@ -19,6 +22,11 @@
         #endregion
 
         #region Properties
+
+        /// <summary>
+        /// The type of Tournament that the concrete class is.
+        /// </summary>
+        public TournamentTypes Type { get; }
 
         /// <summary>
         /// The list of Participants involved in the Tournament.

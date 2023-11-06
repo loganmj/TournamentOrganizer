@@ -1,7 +1,7 @@
 using TournamentOrganizer.DataModels;
 using TournamentOrganizer.ViewModels;
 
-namespace TournamentOrganizer.Views;
+namespace TournamentOrganizer;
 
 /// <summary>
 /// This page runs the Tournament.

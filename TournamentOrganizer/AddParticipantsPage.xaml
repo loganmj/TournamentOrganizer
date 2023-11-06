@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TournamentOrganizer.Views.AddParticipantsPage"
+             x:Class="TournamentOrganizer.AddParticipantsPage"
              xmlns:viewModel="clr-namespace:TournamentOrganizer.ViewModels"
              x:DataType="viewModel:AddParticipantsPageViewModel"
              Title="{Binding Title}">
     <VerticalStackLayout>
+        <Label Text="{Binding Tournament.Type}" />
         <Label 
             Text="Add/Remove Participants"
             VerticalOptions="Center" 

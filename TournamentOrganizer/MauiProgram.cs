@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using TournamentOrganizer.ViewModels;
-using TournamentOrganizer.Views;
 
 namespace TournamentOrganizer
 {

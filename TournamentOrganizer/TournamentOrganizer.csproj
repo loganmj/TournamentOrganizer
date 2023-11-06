@@ -113,10 +113,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\AddParticipantsPage.xaml">
+	  <MauiXaml Update="AddParticipantsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\TournamentPage.xaml">
+	  <MauiXaml Update="TournamentPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -25,11 +25,11 @@ namespace TournamentOrganizer.DataModels
 
         #region Properties
 
-        /// <summary>
-        /// Returns the Tournament description.
-        /// </summary>
+        /// <inheritdoc/>
         public static string Description { get; } = "Each player is paired with each other player at least once.";
 
+        /// <inheritdoc/>
+        public ITournament.TournamentTypes Type { get; } = ITournament.TournamentTypes.RoundRobin;
         #endregion
 
         #region Public Methods

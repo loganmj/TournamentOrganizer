@@ -1,6 +1,4 @@
-﻿using TournamentOrganizer.Views;
-
-namespace TournamentOrganizer
+﻿namespace TournamentOrganizer
 {
     public partial class AppShell : Shell
     {

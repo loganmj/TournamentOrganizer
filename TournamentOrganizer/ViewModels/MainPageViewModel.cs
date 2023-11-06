@@ -3,8 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using TournamentOrganizer.DataModels;
-using TournamentOrganizer.Views;
-using Microsoft.Maui.Controls;
 
 namespace TournamentOrganizer.ViewModels
 {
@@ -18,7 +16,8 @@ namespace TournamentOrganizer.ViewModels
         #region Fields
 
         [ObservableProperty]
-        private ObservableCollection<ITournament.TournamentTypes> _tournamentTypes;
+        private ObservableCollection<string> _tournamentTypes;
+        // private ObservableCollection<ITournament.TournamentTypes> _tournamentTypes;
 
         [ObservableProperty]
         private ITournament _tournament;
@@ -39,7 +38,10 @@ namespace TournamentOrganizer.ViewModels
         public MainPageViewModel()
         {
             Title = "Tournament Organizer";
-            TournamentTypes = new ObservableCollection<ITournament.TournamentTypes>(Enum.GetValues(typeof(ITournament.TournamentTypes)).OfType<ITournament.TournamentTypes>().ToList());
+
+            TournamentTypes = new ObservableCollection<string>(EnumCustomAttributeConverter.GetEnumMemberNames<ITournament.TournamentTypes>());
+            // TournamentTypes= new ObservableCollection<string>(Enum.GetNames(typeof(ITournament.TournamentTypes)));
+            // TournamentTypes = new ObservableCollection<ITournament.TournamentTypes>(Enum.GetValues(typeof(ITournament.TournamentTypes)).OfType<ITournament.TournamentTypes>().ToList());
             SelectedTournamentIndex = 0;
             TournamentDescription = TournamentFactory.GetDescription((ITournament.TournamentTypes)SelectedTournamentIndex);
             PropertyChanged += OnPropertyChanged;
@@ -72,8 +74,11 @@ namespace TournamentOrganizer.ViewModels
         [RelayCommand]
         public async Task ProgressToAddParticipantsPage()
         {
+            // Create a new Tournament of the selected type.
+            Tournament = TournamentFactory.CreateTournament((ITournament.TournamentTypes)SelectedTournamentIndex);
+
             // Navigate to the AddParticipants page, passing in the Tournament object.
-            await Shell.Current.GoToAsync(nameof(AddParticipantsPage), new Dictionary<string, object> 
+            await Shell.Current.GoToAsync(nameof(AddParticipantsPage), new Dictionary<string, object>
             {
                 {nameof(AddParticipantsPage), Tournament }
             });

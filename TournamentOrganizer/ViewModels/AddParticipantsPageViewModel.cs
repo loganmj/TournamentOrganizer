@@ -37,7 +37,7 @@ namespace TournamentOrganizer.ViewModels
         /// </summary>
         /// <returns></returns>
         [RelayCommand]
-        public async Task GoBack() 
+        public async Task GoBack()
         {
             await Shell.Current.GoToAsync("..");
         }
