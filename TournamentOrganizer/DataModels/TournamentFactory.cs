@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static string GetDescription(ITournament.TournamentTypes type) 
+        public static string GetDescription(ITournament.TournamentTypes type)
         {
             return type switch
             {

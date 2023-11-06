@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using TournamentOrganizer.ViewModels;
+using TournamentOrganizer.Views;
 
 namespace TournamentOrganizer
 {
@@ -15,6 +17,13 @@ namespace TournamentOrganizer
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            // Add main page
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainPageViewModel>();
+
+            // Add AddParticipants page
+            builder.Services.AddTransient<AddParticipantsPage>();
+            builder.Services.AddTransient<AddParticipantsPageViewModel>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

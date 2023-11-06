@@ -62,7 +62,7 @@ namespace TournamentOrganizer.DataModels
         /// Generic constructor.
         /// </summary>
         public RoundRobinTournament() { }
-        
+
         #endregion
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using TournamentOrganizer.DataModels;
 
 namespace TournamentOrganizer.ViewModels
@@ -10,11 +7,13 @@ namespace TournamentOrganizer.ViewModels
     /// <summary>
     /// Business logic for the AddParticipantsPage.
     /// </summary>
-    class AddParticipantsPageViewModel
+    [QueryProperty("Tournament", "Tournament")]
+    internal partial class AddParticipantsPageViewModel : ViewModelBase
     {
         #region Fields
 
-        private readonly ITournament _tournament;
+        [ObservableProperty]
+        private ITournament _tournament;
 
         #endregion
 
@@ -24,10 +23,23 @@ namespace TournamentOrganizer.ViewModels
         /// This constructor requires an ITournament parameter reference
         /// that we can perform operations on.
         /// </summary>
-        /// <param name="tournament"></param>
-        public AddParticipantsPageViewModel(ITournament tournament)
+        public AddParticipantsPageViewModel()
         {
-            _tournament = tournament;
+
+        }
+
+        #endregion
+
+        #region Public Methods
+
+        /// <summary>
+        /// Returns to the previous page.
+        /// </summary>
+        /// <returns></returns>
+        [RelayCommand]
+        public async Task GoBack() 
+        {
+            await Shell.Current.GoToAsync("..");
         }
 
         #endregion

@@ -1,7 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using TournamentOrganizer.DataModels;
+using TournamentOrganizer.Views;
+using Microsoft.Maui.Controls;
 
 namespace TournamentOrganizer.ViewModels
 {
@@ -53,7 +56,7 @@ namespace TournamentOrganizer.ViewModels
         /// <param name="e"></param>
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals(nameof(SelectedTournamentIndex))) 
+            if (e.PropertyName.Equals(nameof(SelectedTournamentIndex)))
             {
                 TournamentDescription = TournamentFactory.GetDescription((ITournament.TournamentTypes)SelectedTournamentIndex);
             }
@@ -62,6 +65,20 @@ namespace TournamentOrganizer.ViewModels
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Pushes the AddParticipants page onto the navigation stack.
+        /// </summary>
+        [RelayCommand]
+        public async Task ProgressToAddParticipantsPage()
+        {
+            // Navigate to the AddParticipants page, passing in the Tournament object.
+            await Shell.Current.GoToAsync(nameof(AddParticipantsPage), new Dictionary<string, object> 
+            {
+                {nameof(AddParticipantsPage), Tournament }
+            });
+        }
+
         #endregion
     }
 }

@@ -8,13 +8,13 @@ namespace TournamentOrganizer.Views;
 /// </summary>
 public partial class TournamentPage : ContentPage
 {
-	/// <summary>
-	/// Constructs a Tournament Page using a passed in Tournament object.
-	/// </summary>
-	/// <param name="tournament"></param>
-	public TournamentPage(ITournament tournament)
-	{
-		InitializeComponent();
-		BindingContext = new TournamentPageViewModel(tournament);
-	}
+    /// <summary>
+    /// Constructs a Tournament Page using a passed in Tournament object.
+    /// </summary>
+    /// <param name="tournament"></param>
+    public TournamentPage(ITournament tournament)
+    {
+        InitializeComponent();
+        BindingContext = new TournamentPageViewModel(tournament);
+    }
 }

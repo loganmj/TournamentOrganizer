@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TournamentOrganizer.DataModels;
+﻿using TournamentOrganizer.DataModels;
 
 namespace TournamentOrganizer.ViewModels
 {
@@ -25,7 +20,7 @@ namespace TournamentOrganizer.ViewModels
         /// that we can perform operations on.
         /// </summary>
         /// <param name="tournament"></param>
-        public TournamentPageViewModel(ITournament tournament) 
+        public TournamentPageViewModel(ITournament tournament)
         {
             _tournament = tournament;
         }

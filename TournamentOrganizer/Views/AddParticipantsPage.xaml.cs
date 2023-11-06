@@ -1,3 +1,6 @@
+using TournamentOrganizer.DataModels;
+using TournamentOrganizer.ViewModels;
+
 namespace TournamentOrganizer.Views;
 
 /// <summary>
@@ -5,11 +8,12 @@ namespace TournamentOrganizer.Views;
 /// </summary>
 public partial class AddParticipantsPage : ContentPage
 {
-	/// <summary>
-	/// Constructs an AddParticipantsPage
-	/// </summary>
-	public AddParticipantsPage()
-	{
-		InitializeComponent();
-	}
+    /// <summary>
+    /// Constructs an AddParticipantsPage
+    /// </summary>
+    public AddParticipantsPage()
+    {
+        InitializeComponent();
+        BindingContext = new AddParticipantsPageViewModel();
+    }
 }
