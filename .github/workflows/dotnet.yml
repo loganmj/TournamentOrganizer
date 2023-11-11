@@ -1,5 +1,5 @@
 # Define when the workflow is run
-name: B
+name: Build and Publish .NET MAUI Application
 on:
   push:
     branches: [ main ]
@@ -46,16 +46,6 @@ jobs:
       
     - name: Build Project
       run: dotnet build TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android33.0 /p:AndroidSigningKeyStore=myapp.keystore /p:AndroidSigningKeyAlias=com.loganmj.TournamentOrganizer /p:AndroidSigningKeyPass="${{ secrets.KEYSTORE_PASSWORD }}" --no-restore
-
-    - name: Sign APK with secret
-      env:
-        KEYSTORE: ${{ secrets.KEYSTORE }}
-        KEYSTORE_PASSWORD: ${{ secrets.ANDROIDSIGNINGSTOREPASS }}
-        KEY_PASSWORD: ${{ secrets.ANDROIDSIGNINGKEYPASS }}
-      run: |
-        echo $KEYSTORE | base64 --decode > keystore.jks
-        jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore keystore.jks -storepass $ANDROIDSIGNINGSTOREPASS -keypass $ANDROIDSIGNINGKEYPASS app/build/outputs/apk/release/app-release-unsigned.apk alias_name
-        zipalign -v 4 app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/app-release-signed.apk
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
