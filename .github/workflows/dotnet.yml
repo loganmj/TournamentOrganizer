@@ -37,7 +37,7 @@ jobs:
       run: dotnet workload install maui --ignore-failed-sources
 
     - name: Restore Dependencies
-      run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj /p:PublishReadyToRun=true
+      run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
 
     - name: Setup Keystore File
       run: |
