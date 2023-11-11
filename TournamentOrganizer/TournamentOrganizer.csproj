@@ -52,7 +52,7 @@
 	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>1</ApplicationVersion>
 	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
-	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <AndroidSigningStorePass>LightningBoltR!</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>Michael Logan</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>Tarmogoyf1G!</AndroidSigningKeyPass>
@@ -64,7 +64,7 @@
 	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>1</ApplicationVersion>
 	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
-	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <AndroidSigningStorePass>LightningBoltR!</AndroidSigningStorePass>
 	  <AndroidSigningKeyAlias>Michael Logan</AndroidSigningKeyAlias>
 	  <AndroidSigningKeyPass>Tarmogoyf1G!</AndroidSigningKeyPass>
@@ -74,6 +74,7 @@
 	  <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
 	  <SignAssembly>False</SignAssembly>
 	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	  <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
