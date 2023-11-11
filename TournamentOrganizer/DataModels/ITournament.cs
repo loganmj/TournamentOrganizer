@@ -14,9 +14,10 @@ namespace TournamentOrganizer.DataModels
         /// </summary>
         public enum TournamentTypes
         {
+            Swiss,
+
             [EnumMember(Value = "Round Robin")]
-            RoundRobin,
-            Swiss
+            RoundRobin
         }
 
         #endregion

@@ -88,7 +88,6 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-    <MauiIcon Include="Resources\AppIcon\tournament_organizer_icon.png" />
     
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" />
@@ -104,7 +103,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\AppIcon\tournament_organizer_icon.png" />
 	  <None Remove="Resources\Images\tournament_flowchart.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\tournament_organizer_icon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
