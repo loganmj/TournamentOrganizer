@@ -45,7 +45,13 @@ jobs:
         gpg -d --passphrase "${{ secrets.KEYSTORE_PASSWORD_GPG }}" --batch myapp.keystore.asc > myapp.keystore
       
     - name: Build Project
-      run: dotnet build TournamentOrganizer/TournamentOrganizer.csproj -c Release -f net7.0-android33.0 /p:AndroidSigningKeyStore=myapp.keystore /p:AndroidSigningKeyAlias=com.loganmj.TournamentOrganizer /p:AndroidSigningKeyPass="${{ secrets.KEYSTORE_PASSWORD }}" --no-restore
+      run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj 
+        -c Release 
+        -f net7.0-android33.0
+        /p:AndroidKeyStore=True  
+        /p:AndroidSigningKeyStore=myapp.keystore 
+        /p:AndroidSigningKeyAlias=com.loganmj.TournamentOrganizer 
+        /p:AndroidSigningKeyPass="${{ secrets.KEYSTORE_PASSWORD }}" --no-restore
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
