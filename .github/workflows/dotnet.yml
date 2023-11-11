@@ -27,6 +27,11 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+
+    - name: Setup Keystore File
+      run: |
+        echo "${{ secrets.KEYSTORE_FILE }}" > myapp.keystore.asc
+        gpg -d --passphrase "${{ secrets.KEYSTORE_PASSWORD_GPG }}" --batch myapp.keystore.asc > myapp.keystore
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -34,15 +39,10 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Install MAUI Workload
-      run: dotnet workload install maui --ignore-failed-sources
-
+      run: dotnet workload install maui
+      
     - name: Restore Dependencies
-      run: dotnet restore TournamentOrganizer/TournamentOrganizer.csproj
-
-    - name: Setup Keystore File
-      run: |
-        echo "${{ secrets.KEYSTORE_FILE }}" > myapp.keystore.asc
-        gpg -d --passphrase "${{ secrets.KEYSTORE_PASSWORD_GPG }}" --batch myapp.keystore.asc > myapp.keystore
+      run: dotnet restore
       
     - name: Build Project
       run: dotnet publish TournamentOrganizer/TournamentOrganizer.csproj 
@@ -51,7 +51,8 @@ jobs:
         /p:AndroidKeyStore=True  
         /p:AndroidSigningKeyStore=myapp.keystore 
         /p:AndroidSigningKeyAlias=com.loganmj.TournamentOrganizer 
-        /p:AndroidSigningKeyPass="${{ secrets.KEYSTORE_PASSWORD }}" --no-restore
+        /p:AndroidSigningKeyPass="${{ secrets.KEYSTORE_PASSWORD }}"
+        --no-restore
       
     - name: Upload Android Artifact
       uses: actions/upload-artifact@v3.1.0
