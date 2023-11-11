@@ -52,6 +52,10 @@
 	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>1</ApplicationVersion>
 	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>LightningBoltR!</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>Michael Logan</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>Tarmogoyf1G!</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
@@ -60,6 +64,10 @@
 	  <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 	  <ApplicationVersion>1</ApplicationVersion>
 	  <ApplicationId>com.loganmj.tournamentOrganizer</ApplicationId>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>LightningBoltR!</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>Michael Logan</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>Tarmogoyf1G!</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup>
